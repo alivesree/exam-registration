@@ -62,15 +62,23 @@ onAuthorize: function (data, actions) {
     .then(function () {
       window.alert('Payment Complete!');
       updatePayment();
+  document.body.innerHTML = '';
+	document.body.innerHTML ='<div  style="color: green;font-size: 13px;margin-left: 10px; " id="lblPayment">'+
+			   
+        ' Payment successfull.'+
+         
+         '</div>'
     });
 }
 }, '#paypal-button-container');
 function updatePayment()
 {
+ 
+
   var id="";
  // alert(id);
 id=getCookie('user_id');
- // alert(id);
+ //alert(id);
   xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {

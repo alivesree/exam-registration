@@ -69,6 +69,7 @@ function getCookie(cname) {
     }
     return "";
 }
+
 function ajaxFunctionMainMenu2(page){
 	var ajaxRequest;  
 	try{
