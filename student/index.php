@@ -43,8 +43,32 @@ else
 <script src="js/screenfull.js"></script>
  <script>
 	   $( document ).ready(function() {
-		$('#payment').html('Paid');
+		   if(getCookie('payment_status')=='1')
+		   {
+		   $('#lblPayment').show();
+		   }
+		else
+		{
+		$('#payment').show();
+		}
 });
+function getCookie(cname) {
+    var name = cname + "=";
+   // alert(document.cookie);
+    var decodedCookie = decodeURIComponent(document.cookie);
+   // alert(decodedCookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 function ajaxFunctionMainMenu2(page){
 	var ajaxRequest;  
 	try{
@@ -98,10 +122,18 @@ function ajaxFunctionMainMenu2(page){
 				<h2>
 				<a href="index.php">Payment</a>
 				</h2>
-			</div id="payment">
-			<!-- <iframe src = "../paypal.html" height = "300" style="border:none; ">
-         Sorry your browser does not support Payment Gateway.
-      </iframe> -->
+			</div>
+
+			<div  style="display:none;color: green;font-size: 13px;margin-left: 20px; " id="lblPayment">
+			   
+				Payment already completed.
+				
+	    	</div>
+			<iframe src = "../paypal.html" height = "300" style="border:none;display:none; " id="payment">
+				Sorry your browser does not support Payment Gateway.
+			</iframe>
+			
+	
 	</div>
 		<!--//banner-->
 </body>

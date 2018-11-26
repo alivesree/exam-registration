@@ -114,8 +114,8 @@ if(isset($_POST['login']))
 	$result=mysqli_query($db,$sql_one);
 if	($result->num_rows>0)	
 {
-	$result=mysqli_query($db,$sql_two);	
-	$row2 = mysqli_fetch_assoc($result);
+	$result2=mysqli_query($db,$sql_two);	
+	$row2 = mysqli_fetch_assoc($result2);
 	session_start();
 	$_SESSION["id"] = $_POST[email];
 	$_SESSION["payment_status"] = $row2['payment_status'];

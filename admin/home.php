@@ -3,7 +3,7 @@ session_start();
 //	echo '<script language="javascript"> alert("Lteest"'.$_SESSION["id"].'"tes"); </script>';
 
 if (isset($_SESSION['id']) && $_SESSION['id']!=null) {
-	echo '<script language="javascript"> alert("logged in"); </script>';
+//	echo '<script language="javascript"> alert("logged in"); </script>';
 	// session_destroy();
 	// unset($_SESSION['id']);
 	// header("location: ../index.php");
@@ -88,7 +88,8 @@ else
       <th>Name</th>
         <th>E-Mail</th>
             <th>Contact</th>
-            <th>Registered On</th>
+			<th>Registered On</th>
+			<th>Payment Status</th>
  <th>Action</th>
 
       <th style="width: 3.5em;"></th>
@@ -109,7 +110,8 @@ while($row=mysqli_fetch_array($res))
           <td><?=$row['name']; ?></td>
      <td><?=$row['email']; ?></td>
      <td><?=$row['phone']; ?></td>
-          <td><?=$row['registered_on']; ?></td>
+		  <td><?=$row['registered_on']; ?></td>
+		  <td><?= $row['payment_status'] == '1'? 'paid' : 'not paid'; ?></td>
       <td>
 
 <a href="delete-user.php?delcom=<?php echo $row['student_id'];?>"><!--<button class="btn paddi btn-default">Delete</button>--><span class="spa"><i class="fa fa-trash"></i></span></a>
